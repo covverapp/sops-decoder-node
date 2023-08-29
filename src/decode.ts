@@ -318,7 +318,7 @@ async function getAwsSessionForEntry(entry: {
   if (!entry.role) {
     // if there are no role to assume, return the client directly
     try {
-      const client = new aws.KMS({ region });
+      const client = new aws.KMS({ region, credentials: null });
       return client;
     } catch (err) {
       throw new SopsError(`Unable to get boto3 client in ${region}`);
